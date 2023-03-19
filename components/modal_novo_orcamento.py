@@ -5,3 +5,7 @@ import dash_bootstrap_components as dbc
 from app import app
 
 from components import home
+
+
+
+layout = []
