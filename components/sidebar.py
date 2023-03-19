@@ -32,7 +32,21 @@ layout = dbc.Container([
             ])
         ])
     ]),
-    html.Hr()
+    html.Hr(),
+    dbc.Row([
+        dbc.Col([
+            dbc.Nav([
+                dbc.NavItem(dbc.NavLink([html.I(className='fa fa-home dbc'), '\t INÍCIO'], href = '/home', active=True, style = {'text_align': 'center'})),
+                html.Br(),
+                dbc.NavItem(dbc.NavLink([html.I(className='fa-brands fa-font-awesome'), '\t NOVO MATERIAL'], href = '/home', active=True, style = {'text_align': 'center'})),
+                html.Br(),
+                dbc.NavItem(dbc.NavLink([html.I(className='fa fa-home dbc'), '\t NOVO PRODUTO'], href = '/home', active=True, style = {'text_align': 'center'})),
+                html.Br(),
+                dbc.NavItem(dbc.NavLink([html.I(className='fa fa-home dbc'), '\t NOVO ORÇAMENTO'], href = '/home', active=True, style = {'text_align': 'center'})),
+                html.Br()
+            ])
+        ])
+    ])
 
 ], style = {'padding-top': '50px', 'margin-bottom': '100px'}, className='text-center')
 
