@@ -18,7 +18,7 @@ layout = dbc.Modal([
             ], sm = 12, md = 4, style = {'paddingRight': '30px'}),
             dbc.Col([
                 html.H5('Tipo:'),
-                dcc.Dropdown([],id = 'tipo_material')
+                dcc.Dropdown(['aaaaa'],id = 'tipo_material')
             ], sm = 12, md = 4, style = {'paddingRight': '30px'}),
             dbc.Col([
                 html.H5('Descrição:'),
@@ -28,7 +28,7 @@ layout = dbc.Modal([
         dbc.Row([
             dbc.Col([
                 html.H5('Unidade:'),
-                dcc.Dropdown([], id = 'unidade_material')
+                dcc.Dropdown(['bbbbbb'], id = 'unidade_material')
             ], sm = 12, md = 5, style = {'paddingRight': '30px'}),
             dbc.Col([
                 html.H5('Preço:'),

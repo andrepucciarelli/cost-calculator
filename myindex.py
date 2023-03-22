@@ -8,17 +8,20 @@ import sqlite3
 from app import *
 from components import home, sidebar
 
+from sql_beta import df_material
+
 
 # =========  Layout  =========== #
 
-app.layout = dbc.Container(children=[
+app.layout = dbc.Container([
 
     ## Stores vindos do banco de dados
     dcc.Location(id = "url"),
     dcc.Store(id = 'store_intermediario', data = {}),
-    dcc.Store(id = 'store_material', data = {}),
+    dcc.Store(id = 'store_material', data = df_material.to_dict()),
     dcc.Store(id = 'store_produto', data = {}),
     dcc.Store(id = 'store_orcamento', data = {}),
+    html.Div(id = 'div_fantasma'),
 
 
     ## Layout da Página
@@ -44,6 +47,25 @@ def render_page(pathname):
         return dbc.Container([
             html.H1('Página não encontrada')
         ])
+
+# Callback para anexar dados no Banco de dados 
+@app.callback(
+    Output('div_fantasma', 'children'),
+    Input('store_material', 'data')
+)
+def atualizar_banco(material_data):
+    #Retranformar o dict em dataframe novamente
+    df_material_aux = pd.DataFrame(material_data)
+
+    #Preencher o SQL
+    conn = sqlite3.connect('sistema.db')
+
+    df_material_aux.to_sql('materiais', conn, if_exists = 'replace', index = False)
+    conn.commit()
+    conn.close()
+
+    return []
+
 
 
 if __name__ == '__main__':
